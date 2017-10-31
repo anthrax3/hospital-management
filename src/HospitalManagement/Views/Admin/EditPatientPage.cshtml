@@ -1,0 +1,238 @@
+﻿@model HospitalManagement.ViewModels.Admin.PatientViewModel
+
+@{
+    ViewData["Title"] = "Edit Patient";
+
+}
+
+<h2 class="header2" style="color:#022e4e;">Edit Patient Details</h2>
+
+
+<p class="text-primary text">
+
+    Update the patient record and Click the save changes button below
+
+</p>
+
+
+<div class="row">
+    <div class="col-sm-5">
+    </div>
+
+
+    <div class="signPage col-sm-7">
+        <form id="AddPatientForm" asp-controller="Admin" asp-action="SavePatientChanges" method="post" autocomplete="on" role="form" enctype="multipart/form-data">
+
+
+
+            <div style="padding-left:4%;">
+
+
+                <div class="profile-header-container">
+                    <div class="profile-header-img">
+
+
+                        @if (@Model.ProfilePicture == null)
+                        {
+                            <img class="img-circle" src="http://www.iconshock.com/img_jpg/IMPRESSIONS/medical/jpg/256/patient_icon.jpg" />
+
+                        }
+                        else
+                        {
+                            <img class="img-circle" src="~/profiledat/@Html.Encode(@Model.ProfilePicture)" />
+                        }
+
+
+
+
+
+                    </div>
+                </div>
+
+
+            </div>
+
+
+
+            <div style="padding-left:4%; padding-bottom:20px">
+
+                <input type="file" name="file" id="file" class="filestyle text btn" data-classButton="btn btn-primary" data-input="false" data-classIcon="icon-plus" data-buttonText="Update Profile Picture" accept="image/*"  />
+               <br />
+                 <input type="button" class="btn btn-danger  text " value="Delete Picture" onclick="location.href='@Url.Action("DeletePhoto", "Admin")'" />
+
+
+            </div>
+
+
+
+            <div style="padding-left:4%;">
+
+
+                <div class="row">
+
+                    <div class="col-sm-6">
+                        <label asp-for="Fname" class="text">First Name</label><span class="asteristik">*</span>
+                        <input asp-for="Fname" id="Fname" type="text" class="form-control" placeholder="Enter First Name" onkeypress="return checkAlphabets(event)" />
+                        <span asp-validation-for="Fname" id="patientCheckSpan" class="text-danger"></span>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <label asp-for="Lname" class="text">Last Name</label><span class="asteristik">*</span>
+                        <input asp-for="Lname" id="Lname" type="text" class="form-control" placeholder="Enter Last Name" onkeypress="return checkAlphabets(event)" />
+                        <span asp-validation-for="Lname" id="patientCheckSpan" class="text-danger"></span>
+
+                    </div>
+
+                </div>
+
+
+                <br />
+
+                <div class="form-group">
+                    <label asp-for="Email" class="text">Patient's email address</label><span class="asteristik">*</span>
+                    <input asp-for="Email" id="Email" type="email" class="form-control" placeholder="Enter email" />
+                    <span asp-validation-for="Email" id="patientCheckSpan" class="text-danger"></span>
+
+                </div>
+
+
+
+                <div class="form-group ">
+
+                    <label asp-for="Gender" class="text">Select gender</label><span class="asteristik">*</span>
+
+
+                    <select asp-for="Gender" class="form-control text" style="color:#052483">
+                        <option value="Male" class="text">Male</option>
+                        <option value="Female" class="text">Female</option>
+
+                    </select>
+                    <span asp-validation-for="Gender" id="patientCheckSpan" class="text-danger"></span>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label asp-for="PatientAge" class="text">Patient's age</label><span class="asteristik">*</span>
+                    <input asp-for="PatientAge" id="Age" class="form-control " type="number" onkeypress="return checkNumbers(event)" />
+                    <span asp-validation-for="PatientAge" id="patientCheckSpan" class="text-danger"></span>
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label asp-for="BloodGroup" class="text">Patient's Blood Group</label><span class="asteristik">*</span>
+                    <select asp-for="BloodGroup" id="BloodGroup" class="form-control text" style="color:#052483">
+
+                        <option value="select" class="text">Select blood group</option>
+
+                        <option value="o+" class="text">O+</option>
+                        <option value="o-" class="text">O-</option>
+
+                        <option value="a+" class="text">A+</option>
+                        <option value="a-" class="text">A-</option>
+
+                        <option value="b+" class="text">B+</option>
+                        <option value="b-" class="text">B-</option>
+
+                        <option value="ab+" class="text">AB+</option>
+                        <option value="ab-" class="text">AB-</option>
+
+
+
+                    </select>
+                    <span asp-validation-for="BloodGroup" id="patientCheckSpan" class="text-danger"></span>
+
+                </div>
+
+
+
+
+                <div class="form-group">
+
+                    <label asp-for="ContactNo" class="text">Contact No</label>
+
+                    <input asp-for="ContactNo" id="ContactNo" class="form-control " placeholder="Contact number" type="tel" onkeypress="return checkNumbers(event)" />
+
+                </div>
+
+
+
+
+
+                <div class="form-group">
+
+                    <label asp-for="Address" class="text">Patient's address</label>
+
+                    <textarea asp-for="Address" id="Address" class="form-control " placeholder="Address" rows="3" style="max-width:620px;"></textarea>
+                </div>
+
+
+                <br />
+
+                <div class="form-group">
+
+                    <label asp-for="PatientDetails" class="text">Patient's details</label>
+
+                    <textarea asp-for="PatientDetails" id="PatientDetails" class="form-control " placeholder="Details.." rows="3" style="max-width:620px;"></textarea>
+                </div>
+
+
+                <br />
+
+
+                <div class="form-group">
+
+                    <label asp-for="PatientHistory" class="text">Patient's history</label>
+
+                    <textarea asp-for="PatientHistory" id="PatientHistory" class="form-control " placeholder="History of diseases" rows="2" style="max-width:620px;"></textarea>
+                </div>
+
+
+                <br />
+
+                <div class="form-group">
+
+                    <label asp-for="DoctorDiagnosis" class="text">Doctor's diagnosis</label>
+
+                    <textarea asp-for="DoctorDiagnosis" id="DoctorDiagnosis" class="form-control " placeholder="Diagnosis of diseases" rows="2" style="max-width:620px;"></textarea>
+                </div>
+
+
+                <br />
+
+
+                <div class="form-group">
+
+                    <label asp-for="Comments" class="text">Comments</label>
+
+                    <textarea asp-for="Comments" id="Comments" class="form-control " placeholder="Comments about the patient" rows="2" style="max-width:620px;"></textarea>
+                </div>
+
+
+                <br />
+
+                <br />
+
+
+                <div class="row">
+                    <div class="col-sm-3">
+                    </div>
+
+                    <input type="submit" class="btn btn-primary btn-large btn-block text col-sm-9" value="Save Changes" style="margin:auto; height:50px;" />
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

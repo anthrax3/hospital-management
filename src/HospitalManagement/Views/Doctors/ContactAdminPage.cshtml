@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewData["Title"] = "Contact Admin";
+
+}
+
+<h2>@ViewData["Title"]</h2>
+
+
+<div class="row adminP">
+    <div class="col-sm-3">
+    </div>
+
+    <div class="askAdminPage col-sm-6">
+        <form asp-controller="Doctors" asp-action="AskConfirm" method="post" autocomplete="on" role="form">
+
+            <div class="centered">
+                <h3 >Having problem? Ask Admin.</h3>
+            </div>
+
+            <br />
+
+
+            <div class="Askinnerdiv">
+
+
+
+                <div class="form-group">
+
+
+                    <textarea  id="question" name="question" class="form-control text" placeholder="Enter your question here.." rows="8" style="max-width:500px;" required></textarea>
+                </div>
+
+                <div class="centered" >
+
+                    <input type="submit"  class="btn btn-success btn-lg text" style="width:700px" value="Submit" />
+                </div>
+
+
+                </div>
+
+
+        </form>
+
+
+
+
+
+    </div>
+
+    <div class="col-sm-3">
+    </div>
+
+
+</div>
+
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

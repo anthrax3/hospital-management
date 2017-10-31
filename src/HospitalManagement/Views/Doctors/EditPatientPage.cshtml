@@ -1,0 +1,73 @@
+﻿@model IEnumerable<Patient>
+
+@{
+    ViewData["Title"] = "Modify Patient";
+
+}
+
+
+
+
+    <table id="t01" style="border:none" class="text patientPage">
+        <tr>
+            <th>Picture</th>
+            <th>Name</th>
+            <th>Gender</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Diagnosis</th>
+            <th>Edit</th>
+           
+
+        </tr>
+
+
+        @foreach (var patient in Model)
+        {
+
+            <tr>
+
+                <td>
+                    <div class="profile-header-container col-sm-1">
+                        <div class="profile-header-img1">
+                            @if (@patient.ProfilePicture == null)
+                            {
+                                <img class="img-circle1" src="http://www.iconshock.com/img_jpg/IMPRESSIONS/medical/jpg/256/patient_icon.jpg" />
+
+                            }
+                            else
+                            {
+                                <img class="img-circle1" src="~/profiledat/@Html.Encode(@patient.ProfilePicture)" />
+                            }
+
+
+
+                        </div>
+                    </div>
+                </td>
+
+                <td>@Html.Encode(@patient.Fname) @Html.Encode(@patient.Lname) </td>
+                <td>@Html.Encode(@patient.Gender) </td>
+                <td>@Html.Encode(@patient.Age) </td>
+                <td>@Html.Encode(@patient.Email) </td>
+                <td>@Html.Encode(@patient.Diagnosis) </td>
+
+                @{
+                    string reference = "http://localhost:54118/Doctors/EditPatient?editPatient=" + @Html.Encode(@patient.PatientId.ToString());
+
+
+                }
+
+                <td><a href=@reference name="PatientToEdit" value="@Html.Encode(@patient.PatientId)" class="text" style="color:black;"><strong>Edit Details</strong> </a></td>
+
+            </tr>
+
+                    }
+
+
+
+
+    </table>
+
+
+

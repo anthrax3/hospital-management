@@ -1,0 +1,164 @@
+﻿@model HospitalManagement.ViewModels.Account.EditProfileViewModel
+
+@{
+    ViewData["Title"] = "Edit Profile";
+
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p class="text-primary text">
+
+    Edit your Profile Information and click Save Changes
+
+</p>
+
+<div class="row">
+    <div class="col-sm-5">
+    </div>
+
+    <div class="signPage col-sm-7 ">
+        <form id="SignUpForm" asp-controller="Accounts" asp-action="SaveProfileChanges" method="post" autocomplete="on" role="form" enctype="multipart/form-data">
+
+            <div>
+                <div class="row">
+
+                    <div class="col-sm-1">
+                    </div>
+
+
+                    <div class="profile-header-container col-sm-11">
+                        <div class="profile-header-img">
+                            
+                            @if (@Model.ProfilePicture == "")
+                            {
+                                <img class="img-circle" src="https://www.gwages.com/assets_gwages/assets-static/media/man-avatar.png" />
+
+                            }
+                            else
+                            {
+                                <img class="img-circle" src="~/profiledat/@Html.Encode(@Model.ProfilePicture)" />
+                            }
+                            
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <div class="row">
+
+                    <div class="col-sm-1">
+                    </div>
+
+                    <div class="col-sm-11">
+                        <input type="file" name="file" id="file" class="text btn " accept="image/*"  />
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+
+            <br />
+
+            <div style="padding-left:4%" ;>
+
+
+                <div class="row">
+
+                    <div class="col-sm-6">
+                        <label asp-for="Fname" class="text">First Name</label><span class="asteristik">*</span>
+                        <input asp-for="Fname" id="Fname" type="text" class="form-control" placeholder="Enter First Name" />
+                        <span asp-validation-for="Fname" id="SignUpCheckSpan" class="text-danger"></span>
+
+                    </div>
+                    <div class="col-sm-6">
+                        <label asp-for="Lname" class="text">Last Name</label><span class="asteristik">*</span>
+                        <input asp-for="Lname" id="Lname" type="text" class="form-control" placeholder="Enter Last Name" />
+                        <span asp-validation-for="Lname" id="SignUpCheckSpan" class="text-danger"></span>
+
+                    </div>
+
+                </div>
+
+
+                <br />
+
+               
+                <div class="form-group">
+                    <div class="row">
+
+                        <div class="col-sm-6">
+                            <label asp-for="Country" class="text">Country/Region</label><span class="asteristik">*</span>
+                            <input asp-for="Country" id="Country" type="text" class="form-control" placeholder="Enter your country name" />
+                            <span asp-validation-for="Country" id="SignUpCheckSpan" class="text-danger"></span>
+
+                        </div>
+                        <div class="col-sm-6">
+                            <label asp-for="City" class="text">City</label><span class="asteristik">*</span>
+                            <input asp-for="City" id="City" type="text" class="form-control" placeholder="Enter your city name" />
+                            <span asp-validation-for="City" id="SignUpCheckSpan" class="text-danger"></span>
+
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <label asp-for="ContactNo" class="text">Contact No</label><span class="asteristik">*</span>
+
+                    <input asp-for="ContactNo" id="ContactNo" class="form-control " placeholder="Contact number" type="tel" onkeypress="return checkNumbers(event)" />
+                    <span asp-validation-for="ContactNo" id="SignUpCheckSpan" class="text-danger"></span>
+
+                </div>
+
+
+
+
+
+                <div class="form-group">
+
+                    <label asp-for="Address" class="text">Street Address</label><span class="asteristik">*</span>
+
+                    <textarea asp-for="Address" id="Address" class="form-control " placeholder="Address" rows="3" style="max-width:620px;"></textarea>
+                    <span asp-validation-for="Address" id="SignUpCheckSpan" class="text-danger"></span>
+
+                </div>
+
+
+
+                <div class="form-group">
+
+                    <label asp-for="About" class="text">About</label>
+
+                    <textarea asp-for="About" id="About" class="form-control " placeholder="Tell something about yourself.. " rows="2" style="max-width:620px;"></textarea>
+                </div>
+
+
+
+                <br />
+                <br />
+                <input type="submit" class="btn btn-primary btn-large btn-block text" value="Save Changes" style="margin:auto; height:50px;" />
+
+
+            </div>
+
+        </form>
+
+
+
+
+
+    </div>
+
+</div>
+
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

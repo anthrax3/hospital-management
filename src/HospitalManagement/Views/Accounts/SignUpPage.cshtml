@@ -1,0 +1,224 @@
+﻿@model SignUpViewModel
+
+@{
+    ViewData["Title"] = "Create a new account";
+
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<p class="text-primary text" >
+
+    New user? Create a free account to avail the services provided by us!
+
+</p>
+
+<div class="row">
+    <div class="col-sm-5">
+        </div>
+
+<div class="signPage col-sm-7 ">
+    <form id="SignUpForm" asp-controller="Accounts" asp-action="SignUp" method="post" autocomplete="on" role="form" enctype="multipart/form-data">
+
+            <div>
+        <div class="row">
+
+            <div class="col-sm-1">
+                </div>
+
+
+            <div class="profile-header-container col-sm-11">
+                <div class="profile-header-img">
+                    <img class="img-circle" src="https://cdn2.iconfinder.com/data/icons/business-209/512/Add_Person-512.png" />
+
+                 </div>
+            </div>
+
+           
+
+        </div>
+                <div class="row">
+                    
+                    <div class="col-sm-1">
+                    </div>
+
+                    <div class="col-sm-11">
+                        <input  type="file" name="file" id="file" class="text btn " accept="image/*" required  />
+
+                    </div>
+                    
+                   
+                </div>
+
+                    
+                </div>
+
+        <br />
+
+        <div style="padding-left:4%"; >
+
+
+        <div class="row">
+
+            <div class="col-sm-6">
+                <label asp-for="Fname" class="text">First Name</label><span class="asteristik">*</span>
+                <input asp-for="Fname" id="Fname" type="text" class="form-control" placeholder="Enter First Name" />
+                <span asp-validation-for="Fname" id="SignUpCheckSpan" class="text-danger"></span>
+
+             </div>
+            <div class="col-sm-6">
+                <label asp-for="Lname" class="text">Last Name</label><span class="asteristik">*</span>
+                <input asp-for="Lname" id="Lname" type="text" class="form-control" placeholder="Enter Last Name"  />
+                <span asp-validation-for="Lname" id="SignUpCheckSpan" class="text-danger"></span>
+
+            </div>
+
+        </div>
+
+
+        <br />
+
+        <div class="form-group">
+            <label asp-for="Email" class="text">Email</label><span class="asteristik">*</span>
+            <input asp-for="Email" id="Email" type="email" class="form-control" placeholder="Enter email" />
+            <span asp-validation-for="Email" id="SignUpCheckSpan" class="text-danger"></span>
+
+        </div>
+
+        <div class="form-group">
+
+            <div class="row">
+
+                <div class="col-sm-6">
+
+                    <label asp-for="LoginPassword" class="text">Password</label><span class="asteristik">*</span>
+                    <input asp-for="LoginPassword"  id="LoginPassword" type="password" class="form-control" placeholder="Enter password" />
+                    <span asp-validation-for="LoginPassword" id="SignUpCheckSpan" class="text-danger"></span>
+
+                </div>
+                <div class="col-sm-6">
+
+                    <label asp-for="LoginPasswordConf" class="text">Confirm Password</label><span class="asteristik">*</span>
+                    <input asp-for="LoginPasswordConf" id="LoginPasswordConf" type="password" class="form-control" placeholder="Enter again" />
+                    <span asp-validation-for="LoginPasswordConf" id="SignUpCheckSpan" class="text-danger"></span>
+
+                 </div>
+
+            </div>
+        </div>
+
+
+        <div class="form-group ">
+          
+                    <label asp-for="Gender" class="text">Select gender</label><span class="asteristik">*</span>
+                 
+               
+                    <select asp-for="Gender" class="form-control text" style="color:#052483" >
+                        <option value="Male" class="text" >Male</option>
+                        <option value="Female" class="text"  >Female</option>
+
+                    </select>
+            <span asp-validation-for="Gender" id="SignUpCheckSpan" class="text-danger"></span>
+
+            </div>
+
+        <br />
+
+
+        <div class="form-group">
+
+            <label asp-for="Birthday" class="text">Date of Birth</label><span class="asteristik">*</span>
+
+            <input asp-for="Birthday" id="Birthday" class="form-control " type="date" />
+            <span asp-validation-for="Birthday" id="SignUpCheckSpan" class="text-danger"></span>
+
+        </div>
+
+        <div class="form-group">
+            <div class="row">
+
+                <div class="col-sm-6">
+                    <label asp-for="Country" class="text">Country/Region</label><span class="asteristik">*</span>
+                    <input asp-for="Country" id="Country" type="text" class="form-control" placeholder="Enter your country name" />
+                    <span asp-validation-for="Country" id="SignUpCheckSpan" class="text-danger"></span>
+
+                 </div>
+                <div class="col-sm-6">
+                    <label asp-for="City" class="text">City</label><span class="asteristik">*</span>
+                    <input asp-for="City" id="City" type="text" class="form-control" placeholder="Enter your city name"  />
+                    <span asp-validation-for="City" id="SignUpCheckSpan" class="text-danger"></span>
+
+                </div>
+
+            </div>
+        </div>
+
+            <div class="form-group">
+
+                <label asp-for="ContactNo" class="text">Contact No</label><span class="asteristik">*</span>
+
+                <input asp-for="ContactNo" id="ContactNo" class="form-control " placeholder="Contact number" type="tel" onkeypress="return checkNumbers(event)"   />
+                <span asp-validation-for="ContactNo" id="SignUpCheckSpan" class="text-danger"></span>
+
+            </div>
+
+
+
+
+
+            <div class="form-group">
+
+                <label asp-for="Address" class="text">Street Address</label><span class="asteristik">*</span>
+
+                <textarea asp-for="Address"  id="Address" class="form-control " placeholder="Address" rows="3" style="max-width:620px;"></textarea>
+                <span asp-validation-for="Address" id="SignUpCheckSpan" class="text-danger"></span>
+
+             </div>
+
+
+
+        <div class="form-group">
+
+            <label asp-for="About" class="text">About</label>
+
+            <textarea asp-for="About" id="About" class="form-control " placeholder="Tell something about yourself.. " rows="2" style="max-width:620px;"></textarea>
+        </div>
+
+
+            <div class="form-group ">
+
+                <label asp-for="Type" class="text">Signup as</label><span class="asteristik">*</span>
+
+
+                <select asp-for="Type" class="form-control text" style="color:#052483">
+                    <option value="doctor" class="text">Doctor</option>
+                    <option value="admin" class="text">Admin</option>
+
+                </select>
+                <span asp-validation-for="Type" id="SignUpCheckSpan" class="text-danger"></span>
+
+            </div>
+
+
+
+            <br />
+            <br />
+            <input type="submit" class="btn btn-primary btn-large btn-block text" value="Create an account"  style="margin:auto; height:50px;" />
+            
+
+            </div>
+
+</form>
+
+
+
+
+
+</div>
+
+</div>
+
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

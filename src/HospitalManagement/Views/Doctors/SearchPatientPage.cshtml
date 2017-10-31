@@ -1,0 +1,339 @@
+﻿@model IEnumerable<Patient>
+@{
+
+    ViewData["Title"] = "Search Patient";
+
+}
+
+<h2>@ViewData["Title"]</h2>
+
+
+<script>
+    $(document).ready(function () {
+
+     
+
+        $("#PatientName").keyup(function () {
+
+            var url1 = "http://localhost:54118/Doctors/GetPatients?PatientName=" + $("#PatientName").val() + "&PatientAge=" + $("#PatientAge").val() + "&PatientGender=" + $("#PatientGender").val() + "&SortBy=" + $("#SortBy").val() + "&Order=" + $("#Order").val();
+
+            $.ajax({
+                url: url1,
+                dataType: "json",
+                type: "GET",
+                contentType: 'application/json; charset=utf-8',
+                async: true,
+                processData: false,
+                cache: false,
+                success: function (data) {
+
+                    FillTable(data);
+
+
+                },
+                error: function (xhr) {
+                    alert('error');
+                }
+            });
+
+
+
+        });
+
+        $("#PatientAge").keyup(function () {
+
+            var url1 = "http://localhost:54118/Doctors/GetPatients?PatientName=" + $("#PatientName").val() + "&PatientAge=" + $("#PatientAge").val() + "&PatientGender=" + $("#PatientGender").val() +  "&SortBy=" + $("#SortBy").val() + "&Order=" + $("#Order").val();
+
+            $.ajax({
+                url: url1,
+                dataType: "json",
+                type: "GET",
+                contentType: 'application/json; charset=utf-8',
+                async: true,
+                processData: false,
+                cache: false,
+                success: function (data) {
+
+                    FillTable(data);
+
+
+                },
+                error: function (xhr) {
+                    alert('error');
+                }
+            });
+
+
+
+        });
+
+        $("#PatientGender").change(function () {
+
+            var url1 = "http://localhost:54118/Doctors/GetPatients?PatientName=" + $("#PatientName").val() + "&PatientAge=" + $("#PatientAge").val() + "&PatientGender=" + $("#PatientGender").val() + "&SortBy=" + $("#SortBy").val() + "&Order=" + $("#Order").val();
+
+            $.ajax({
+                url: url1,
+                dataType: "json",
+                type: "GET",
+                contentType: 'application/json; charset=utf-8',
+                async: true,
+                processData: false,
+                cache: false,
+                success: function (data) {
+
+                    FillTable(data);
+
+
+                },
+                error: function (xhr) {
+                    alert('error');
+                }
+            });
+
+
+
+        });
+
+        $("#SortBy").change(function () {
+
+            var url1 = "http://localhost:54118/Doctors/GetPatients?PatientName=" + $("#PatientName").val() + "&PatientAge=" + $("#PatientAge").val() + "&PatientGender=" + $("#PatientGender").val() + "&SortBy=" + $("#SortBy").val() + "&Order=" + $("#Order").val();
+
+            $.ajax({
+                url: url1,
+                dataType: "json",
+                type: "GET",
+                contentType: 'application/json; charset=utf-8',
+                async: true,
+                processData: false,
+                cache: false,
+                success: function (data) {
+
+                    FillTable(data);
+
+
+                },
+                error: function (xhr) {
+                    alert('error');
+                }
+            });
+
+
+
+        });
+
+        $("#Order").change(function () {
+
+            var url1 = "http://localhost:54118/Doctors/GetPatients?PatientName=" + $("#PatientName").val() + "&PatientAge=" + $("#PatientAge").val() + "&PatientGender=" + $("#PatientGender").val() + "&SortBy=" + $("#SortBy").val() + "&Order=" + $("#Order").val();
+
+            $.ajax({
+                url: url1,
+                dataType: "json",
+                type: "GET",
+                contentType: 'application/json; charset=utf-8',
+                async: true,
+                processData: false,
+                cache: false,
+                success: function (data) {
+
+                    FillTable(data);
+
+
+                },
+                error: function (xhr) {
+                    alert('error');
+                }
+            });
+
+
+
+        });
+
+
+
+
+
+    });
+
+
+
+    function htmlEncode(value) {
+        return $('<div/>').text(value).html();
+    }
+
+    function htmlDecode(value) {
+        return $('<div/>').html(value).text();
+    }
+
+
+function FillTable(jsonRes) {
+    var i;
+
+    var table = "<tr><th>Picture</th><th>Name</th><th>Gender</th><th>Age</th><th>Blood Group</th><th>Email</th><th>Diagnosis</th><th>History</th></tr>";
+
+    for (i = 0; i < jsonRes.length; i++) {
+
+       if (jsonRes[i].ProfilePicture == null)
+       {
+           jsonRes[i].ProfilePicture="<div class='profile-header-container col-sm-1'>";
+           jsonRes[i].ProfilePicture+= "<div class='profile-header-img1'>";
+
+
+           jsonRes[i].ProfilePicture+= "<img class='img-circle1' src='http://www.iconshock.com/img_jpg/IMPRESSIONS/medical/jpg/256/patient_icon.jpg' />";
+
+           jsonRes[i].ProfilePicture += "</div>";
+           jsonRes[i].ProfilePicture += "</div>";
+
+           }
+
+        else
+       {
+           var val = jsonRes[i].ProfilePicture;
+           
+           jsonRes[i].ProfilePicture = "<div class='profile-header-container col-sm-1'>";
+           jsonRes[i].ProfilePicture += "<div class='profile-header-img1'>";
+           
+         
+           jsonRes[i].ProfilePicture+= "<img class='img-circle1' src='../../profiledat/" +htmlEncode(val)+"' />";
+
+
+               jsonRes[i].ProfilePicture += "</div>";
+               jsonRes[i].ProfilePicture += "</div>";
+
+        }
+        
+        table += "<tr><td>" +jsonRes[i].ProfilePicture +
+        "</td><td>" +
+        htmlEncode(jsonRes[i].Fname) + " " + htmlEncode(jsonRes[i].Lname) +
+         "</td><td>" +
+        htmlEncode(jsonRes[i].Gender) +
+        "</td><td>" +
+        htmlEncode(jsonRes[i].Age) +
+        "</td><td>" +
+        jsonRes[i].BloodGroup +
+        "</td><td>" +
+        htmlEncode(jsonRes[i].Email) +
+       "</td><td>" +
+        htmlEncode(jsonRes[i].Diagnosis) +
+       "</td><td>" +
+        htmlEncode(jsonRes[i].History) +
+      "</td></tr>";
+
+    }
+
+    document.getElementById("t01").innerHTML = table;
+}
+
+
+
+</script>
+
+
+<div class="row">
+    <div class="col-sm-1">
+    </div>
+
+    <div class="col-sm-10" id="mdiv" >
+
+        <div class="form-group">
+           
+            <input  id="PatientName" type="text" class="textbox text"  placeholder="Enter Patient Name" />&nbsp;
+            <input id="PatientAge" type="number" class="textbox text" placeholder="Enter Patient Age" /> &nbsp;
+           
+             <select id="PatientGender"  class="textbox text" style="color:#052483; width:150px;">
+                 <option value="Select" class="text">Select</option>
+                 <option value="Male" class="text">Male</option>
+                <option value="Female" class="text">Female</option>
+
+            </select>&nbsp;
+           
+            <select id="SortBy" name="SortBy" class="textbox text" style="color:#052483; width:150px;">
+                <option value="Fname" class="text">First Name</option>
+                <option value="Lname" class="text">Last Name</option>
+                <option value="Age" class="text">Age</option>
+                <option value="Gender" class="text">Gender</option>
+
+            </select> &nbsp;
+
+
+            <select id="Order" class="textbox text" style="color:#052483; width:150px;">
+               
+                <option value="Ascending" class="text">Ascending</option>
+                <option value="Descending" class="text">Descending</option>
+
+            </select>
+
+
+        </div>
+
+
+
+        <table id="t01" style="border:none" class="text patientPage">
+          
+
+
+            <tr>
+                <th>Picture</th>
+                <th>Name</th>
+                <th>Gender</th>
+                <th>Age</th>
+                <th>Blood Group</th>
+                <th>Email</th>
+                <th>Diagnosis</th>
+                <th>History</th>
+
+
+            </tr>
+
+
+            @foreach (var patient in Model)
+            {
+
+                <tr>
+
+                    <td>
+                        <div class="profile-header-container col-sm-1">
+                            <div class="profile-header-img1">
+                                @if (@patient.ProfilePicture == null)
+                                {
+                                    <img class="img-circle1" src="http://www.iconshock.com/img_jpg/IMPRESSIONS/medical/jpg/256/patient_icon.jpg" />
+
+                                }
+                                else
+                                {
+                                    <img class="img-circle1" src="~/profiledat/@Html.Encode(@patient.ProfilePicture)" />
+                                }
+
+
+
+                            </div>
+                        </div>
+                    </td>
+
+                    <td>@Html.Encode(@patient.Fname) @Html.Encode(@patient.Lname) </td>
+                    <td>@Html.Encode(@patient.Gender) </td>
+                    <td>@Html.Encode(@patient.Age) </td>
+                    <td>@patient.BloodGroup</td>
+                    <td>@Html.Encode(@patient.Email) </td>
+                    <td>@Html.Encode(@patient.Diagnosis) </td>
+                    <td>@Html.Encode(@patient.History) </td>
+
+                   
+                </tr>
+
+                        }
+
+
+           
+        </table>
+
+
+        
+
+    </div>
+
+    <div class="col-sm-1">
+    </div>
+
+
+</div>
+

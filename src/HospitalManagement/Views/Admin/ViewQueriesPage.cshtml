@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Query>
+
+@{
+    ViewData["Title"] = "Queries";
+
+}
+
+
+<form id="QueryForm" asp-controller="Admin" asp-action="DeleteQuery" method="post" autocomplete="on" role="form">
+   
+
+    <table id="t01" style="border:none" class="text patientPage">
+        <tr>
+            <th>Doctor's Email</th>
+            <th>Query</th>
+            <th>Select</th>
+
+        </tr>
+
+
+        @foreach (var query in Model)
+        {
+
+            <tr>
+
+                <td>@Html.Encode(@query.DoctorEmail) </td>
+                <td>@Html.Encode(@query.Question) </td>
+                <td><input type="checkbox" name="QueriesToDeleteCheckboxes" value="@Html.Encode(@query.QueryId)"> </td>
+
+            </tr>
+
+        }
+
+
+
+
+    </table>
+
+
+
+    <input type="submit" class="btn btn-primary btn-block text" value="Delete Queries" style="margin-left:75%; margin-top:2%; height:40px;" />
+
+
+</form>

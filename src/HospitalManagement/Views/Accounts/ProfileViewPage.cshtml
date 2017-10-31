@@ -1,0 +1,143 @@
+﻿@model User
+@{
+    ViewData["Title"] = "Profile Information";
+
+}
+
+<h2><strong>@ViewData["Title"]</strong></h2>
+
+
+
+<div class="row" style="padding-left:54px">
+
+   
+
+    <div class="profile-header-container1 col-sm-4">
+        <div class="profile-header-img col-sm-12">
+
+            @if (@Model.ProfilePicture == "")
+            {
+                <img class="img-circle" src="https://www.gwages.com/assets_gwages/assets-static/media/man-avatar.png" />
+
+            }
+            else
+            {
+                <img class="img-circle" src="~/profiledat/@Html.Encode(@Model.ProfilePicture)" />
+            }
+
+            
+            <br />
+            <br />
+
+        </div>
+        <br />
+
+    </div>
+
+
+    <div class="col-sm-8">
+        <span class="textt "> Name: </span>&nbsp;&nbsp;
+        <span id="fname" class="text"> @Html.Encode(@Model.Fname) @Html.Encode(@Model.Lname)</span>
+        <br />
+        <br />
+        <span class="textt "> Email Address: </span>&nbsp;&nbsp;
+        <span id="email" class="text"> @Html.Encode(@Model.Email) </span>
+        <br /><br />
+        <span class="textt "> About me: </span>&nbsp;&nbsp;
+        <span id="about" class="text"> “@Html.Encode(@Model.About)” </span>
+
+
+
+
+    </div>
+
+</div>
+
+<br />
+
+
+<p>
+
+
+
+    <div class="row" style="padding-left:54px;">
+
+        <div class="col-sm-4">
+            <span class="textt "> Gender: </span>&nbsp;&nbsp;
+            <span id="gender" class="text"> @Html.Encode(@Model.Gender)</span>
+        </div>
+
+        <div class="col-sm-8">
+            <span class="textt "> Contact#: </span>&nbsp;&nbsp;
+            <span id="contact" class="text"> @Html.Encode(@Model.Contact) </span>
+        </div>
+
+
+    </div>
+
+    <div class="row" style="padding-left:54px;">
+
+        <div class="col-sm-4">
+            <span class="textt  "> Date of Birth:</span>&nbsp;&nbsp;
+            <span id="dob" class="text"> @Html.Encode(@Model.DateOfBirth)</span>
+
+        </div>
+
+    </div>
+
+
+    <div class="row" style="padding-left:54px;">
+
+        <div class="col-sm-4">
+            <span class="textt "> City: </span>&nbsp;&nbsp;
+            <span id="city" class="text"> @Html.Encode(@Model.City)</span>
+
+
+
+        </div>
+
+        <div class="col-sm-8">
+            <span class="textt "> Country/Region: </span>&nbsp;&nbsp;
+            <span id="country" class="text"> @Html.Encode(@Model.Country) </span>
+
+
+
+        </div>
+
+
+    </div>
+
+    <br />
+
+    <div class="row" style="padding-left:54px;">
+
+        <div class="col-sm-12">
+            <span class="textt  "> Street Address:</span>&nbsp;&nbsp;
+            <span id="address" class="text"> @Html.Encode(@Model.Address)</span>
+
+
+        </div>
+
+    </div>
+
+    <br />
+    <br />
+
+   
+
+   </p>
+
+<div class="row">
+    <div class="col-sm-1" >
+
+    </div>
+
+    <div class="col-sm-11">
+        <button class="btn btn-primary btn-lg" onclick="location.href='@Url.Action("EditProfile", "Accounts")'" value="profileEditBtn">Edit Profile</button>
+
+    </div>
+
+</div>
+
+
+

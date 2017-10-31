@@ -1,0 +1,115 @@
+@model HospitalManagement.Models.Patient
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h2>Edit</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>Patient</h4>
+        <hr />
+        <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="PatientId" />
+        <div class="form-group">
+            <label asp-for="Address" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Age" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Age" class="form-control" />
+                <span asp-validation-for="Age" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="BloodGroup" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="BloodGroup" class="form-control" />
+                <span asp-validation-for="BloodGroup" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Comment" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Comment" class="form-control" />
+                <span asp-validation-for="Comment" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Contact" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Contact" class="form-control" />
+                <span asp-validation-for="Contact" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Detail" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Detail" class="form-control" />
+                <span asp-validation-for="Detail" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Diagnosis" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Diagnosis" class="form-control" />
+                <span asp-validation-for="Diagnosis" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Email" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Fname" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Fname" class="form-control" />
+                <span asp-validation-for="Fname" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Gender" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Gender" class="form-control" />
+                <span asp-validation-for="Gender" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="History" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="History" class="form-control" />
+                <span asp-validation-for="History" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Lname" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Lname" class="form-control" />
+                <span asp-validation-for="Lname" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

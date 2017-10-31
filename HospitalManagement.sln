@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6B0AE480-134D-4847-9C72-76038A0AABF2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4A8C84AF-0CF6-4CF6-AEF1-EA9E3EBF6D9F}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "HospitalManagement", "src\HospitalManagement\HospitalManagement.xproj", "{D3991579-4612-4D11-9BE3-F9448D4F293A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D3991579-4612-4D11-9BE3-F9448D4F293A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3991579-4612-4D11-9BE3-F9448D4F293A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3991579-4612-4D11-9BE3-F9448D4F293A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3991579-4612-4D11-9BE3-F9448D4F293A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D3991579-4612-4D11-9BE3-F9448D4F293A} = {6B0AE480-134D-4847-9C72-76038A0AABF2}
+	EndGlobalSection
+EndGlobal
